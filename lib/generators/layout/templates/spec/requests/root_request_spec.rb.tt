@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe '<%= root_name.capitalize %>', type: :request do
+  include_examples 'GET <%= authenticated ? 'authenticated' : nil %> examples',
+                   '/<%= file_name %>'
+end

@@ -2,8 +2,10 @@
 
 module <%= file_name.capitalize %>
   class <%= file_name.capitalize %>Controller < ActionController::Base
+    <%- if authenticated -%>
     before_action :authenticate_user!
 
+    <%- end -%>
     layout '<%= file_name %>'
   end
 end
