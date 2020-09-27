@@ -1,0 +1,5 @@
+/ frozen_string_literal: true
+
+h1 <%= file_name.capitalize %>::<%= root_name.capitalize %>#index
+
+p Find me in app/views/<%= file_name %>/<%= root_name %>/index.html.slim

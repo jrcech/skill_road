@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+module <%= file_name.capitalize %>
+  class <%= root_name.capitalize %>Controller < <%= file_name.capitalize %>Controller
+    def index; end
+  end
+end
