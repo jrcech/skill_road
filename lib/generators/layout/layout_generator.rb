@@ -47,12 +47,12 @@ class LayoutGenerator < Rails::Generators::NamedBase
   end
 
   def inject_routes
-    routes = %(
-    namespace :#{file_name} do
+    routes = %(namespace :#{file_name} do
       root to: '#{root_name}#index'
     end
+
     )
 
-    inject_into_file 'config/routes.rb', routes, after: "devise_for :users, skip: :omniauth_callbacks\n"
+    inject_into_file 'config/routes.rb', routes, before: "get '/:locale'"
   end
 end
