@@ -47,17 +47,12 @@ class LayoutGenerator < Rails::Generators::NamedBase
   end
 
   def inject_routes
-    template 'config/routes.rb.tt', 'tmp/templates/config/routes.rb'
-
-    routes = File.read('tmp/templates/config/routes.rb') << "\n"
-
-    inject_into_file(
-      'config/routes.rb',
-      routes,
-      before: "get '/:locale'"
+    routes = %(
+    namespace :#{file_name} do
+      root to: '#{root_name}#index'
+    end
     )
 
-    remove_file 'tmp/templates/config/routes.rb'
-    run 'rubocop --auto_correct_all config/routes.rb'
+    inject_into_file 'config/routes.rb', routes, after: "devise_for :users, skip: :omniauth_callbacks\n"
   end
 end

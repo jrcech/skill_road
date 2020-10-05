@@ -3,6 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe '<%= root_name.capitalize %>', type: :request do
-  include_examples 'GET <%= authenticated ? 'authenticated' : nil %> examples',
+  include_examples 'GET <%= authenticated ? 'authenticated ' : nil %>examples',
                    '/<%= file_name %>'
 end
