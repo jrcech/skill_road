@@ -76,6 +76,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'rails-erd', group: :development
+  gem 'rails-erd'
   gem 'seedbank'
 end
