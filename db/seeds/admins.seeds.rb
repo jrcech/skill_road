@@ -6,6 +6,7 @@ seed User, { email: 'jiricech94@gmail.com' },
      password: '123456789',
      first_name: 'Jiří',
      last_name: 'Čech',
+     username: 'jiricech',
      confirmed_at: DateTime.now,
      confirmation_token: 'Auto Confirmed'
 puts

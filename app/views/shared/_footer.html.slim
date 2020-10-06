@@ -1,0 +1,7 @@
+= alert_box "No #{controller.model_plural.underscore.humanize.downcase} found. Start by creating one.", context: :warning if resources.empty?
+footer.row
+  .col-sm-4
+    / - if resources.total_pages > 1
+    /   = render 'shared/per_page', resources: resources, path: path
+  .col-sm-8.text-right
+    = pagy_bootstrap_nav(@pagy)

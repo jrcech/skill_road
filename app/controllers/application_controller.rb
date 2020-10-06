@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+  include ModelOwner
+
+  helper ModelOwner
+
   before_action :set_locale
 
   def set_locale

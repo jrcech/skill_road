@@ -78,7 +78,21 @@ class User < ApplicationRecord
     add_role(:user) if roles.blank?
   end
 
+  def role
+    if has_role?(:admin)
+      :admin
+    elsif has_role?(:owner)
+      :owner
+    else
+      :member
+    end
+  end
+
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def user_self?(item)
+    self == item
   end
 end

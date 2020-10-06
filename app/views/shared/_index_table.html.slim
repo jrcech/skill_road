@@ -1,0 +1,58 @@
+- in_reordering = (local_assigns[:orderable] && local_assigns[:reordering])
+- not_in_reordering = (!local_assigns[:orderable] || (local_assigns[:orderable] && !local_assigns[:reordering]))
+
+table class="table table-striped table-hover#{in_reordering ? ' table-reordering' : ''}"
+  - if local_assigns[:thead]
+    thead
+      tr
+        - if in_reordering
+          th
+        - thead.each do |cell|
+          th class=[cell.is_a?(Hash) ? cell[:classes] : nil]
+            - if cell.is_a?(Hash)
+              = cell[:content]
+            - else
+              = cell
+        - if not_in_reordering
+          th
+            .dropdown.pull-right
+              a class="dropdown-toggle" type="button" data-toggle="dropdown"
+                = tooltip('Sort', 'sort-amount-asc')
+                span class="caret"
+              ul class="dropdown-menu" role="menu"
+                li.dropdown-header Sort by
+                li role="presentation" class=""
+                  = link_to 'Name', '#'
+                li role="presentation" class=""
+                  = link_to 'E-Mail', '#'
+                li role="presentation" class="active"
+                  = link_to 'Updated At', '#'
+            .btn-group.btn-group-xs.pull-right.gap-right role="group" aria-label="Amount of information shown"
+              = link_to tooltip('Basic', 'th-list'), '#', class: 'btn btn-default'
+              = link_to tooltip('Advanced', 'list'), '#', class: 'btn btn-default minor'
+  - tbody_class = in_reordering ? 'sortable' : ''
+  tbody class=tbody_class
+    - if in_reordering
+      - tbody.each do |row|
+        tr id=row[:sortable_id]
+          td = tooltip('Drag to Reorder', 'bars')
+          - row[:cells].each do |cell|
+            td
+              - if cell.is_a?(Hash)
+                = cell[:content]
+              - else
+                = cell
+    - else
+      - tbody.each do |row|
+        tr class=[row[:archived] ? "text-muted" : nil]
+          - row[:cells].each do |cell|
+            td data-link=row[:detail_path] class=[cell.is_a?(Hash) ? cell[:classes] : nil]
+              - if cell.is_a?(Hash)
+                = cell[:content]
+              - else
+                = cell
+          td class="text-right vertical-align #{row[:archived] ? 'text-muted' : nil}"
+            - if row[:archived]
+              = tooltip(t('actions.archive.state'), state_icon(:archived), :archived)
+            - if row[:buttons]
+              == render 'shared/buttons', buttons: row[:buttons], title: nil

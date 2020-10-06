@@ -18,19 +18,19 @@ PreCommit:
   Fasterer:
     enabled: true
   Flay:
-    enabled: true
+    enabled: false
   JsonSyntax:
     enabled: true
   RailsBestPractices:
-    enabled: true
+    enabled: false
     command: ['rails_best_practices', 'app', '--spec']
     flags: ['-c', '.rails_best_practices.yml']
   Reek:
-    enabled: true
+    enabled: false
   RuboCop:
-    enabled: true
+    enabled: false
   SlimLint:
-    enabled: true
+    enabled: false
   Stylelint:
     enabled: true
     required_executable: './node_modules/.bin/stylelint'
