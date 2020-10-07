@@ -10,28 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_164832) do
+ActiveRecord::Schema.define(version: 2020_09_26_193604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
-  create_table "linked_articles", force: :cascade do |t|
-    t.bigint "next_article_id"
-    t.bigint "previous_article_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["next_article_id"], name: "index_linked_articles_on_next_article_id"
-    t.index ["previous_article_id"], name: "index_linked_articles_on_previous_article_id"
-  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -82,7 +64,4 @@ ActiveRecord::Schema.define(version: 2020_10_06_164832) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
-  add_foreign_key "articles", "users"
-  add_foreign_key "linked_articles", "articles", column: "next_article_id"
-  add_foreign_key "linked_articles", "articles", column: "previous_article_id"
 end

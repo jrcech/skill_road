@@ -1,5 +1,0 @@
-.btn-group role="group" aria-label="Reorder Actions" style="float: left;"
-  - if local_assigns[:reordering]
-    = link_to fa_icon('check', text: 'Done'), path_for_index, class: 'btn btn-success'
-  - else
-    = link_to fa_icon('arrows-v', text: 'Reorder'), path_for_reorder, class: 'btn btn-default'
