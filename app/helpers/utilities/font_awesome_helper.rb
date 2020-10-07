@@ -11,6 +11,11 @@ module Utilities
       "<i class='#{construct_class}'></i>#{text}".html_safe
     end
 
+    def icon_for(model)
+      icons = YAML.load_file('config/icons.yml')
+      icons['models'][model.to_s]
+    end
+
     private
 
     def construct_class
