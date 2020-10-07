@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     devise_for :users, skip: :omniauth_callbacks
 
     namespace :admin do
+      resources :users
       get :frontend_test, to: 'frontend_test#index'
 
       root to: 'dashboard#index'
