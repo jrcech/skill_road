@@ -1,0 +1,16 @@
+ruby:
+  header = {
+    title: t("models.#{model_plural_symbol}.more"),
+    icon: icon_for(model_plural_symbol)
+  }
+
+  action_buttons = [
+    new_button
+  ]
+
+== render 'shared/header',
+        resource: @items,
+        main_header: true,
+        header: header,
+        search: true,
+        action_buttons: action_buttons
