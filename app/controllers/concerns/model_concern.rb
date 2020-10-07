@@ -33,11 +33,11 @@ module ModelConcern
   end
 
   def namespace
-    path = ''
-    path += "#{controller_namespace}_" if controller_namespaced?
-    path += "#{model_parent}_" if model_nested?
+    namespace = ''
+    namespace += "#{controller_namespace}_" if controller_namespaced?
+    namespace += "#{model_parent}_" if model_nested?
 
-    path
+    namespace
   end
 
   def namespaced?

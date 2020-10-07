@@ -1,0 +1,9 @@
+/ frozen_string_literal: true
+
+div class="btn-group" role="group" aria-label="#{title}"
+
+  - buttons.each do |button|
+
+    = link_to fa_icon(button[:icon], text: button[:title]),
+      button[:path],
+      button

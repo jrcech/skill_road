@@ -10,7 +10,7 @@ module Utilities
         ),
         path: path_for_new,
         icon: action_icon(:new),
-        classes: bootstrap_class('success')
+        class: bootstrap_class('success')
       }
     end
 

@@ -8,9 +8,10 @@ ruby:
     new_button
   ]
 
-== render 'shared/header',
-        resource: @items,
-        main_header: true,
-        header: header,
-        search: true,
-        action_buttons: action_buttons
+== render 'application/components/header',
+  resource: @items,
+  main_header: true,
+  header: header,
+  search: true,
+  action_buttons: action_buttons,
+  header_buttons: nil

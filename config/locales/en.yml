@@ -1,5 +1,9 @@
 
 en:
   hello: "Hello world"
+  models:
+    users:
+      one: "User"
+      more: "Users"
   actions:
     new: "New %{item}"
