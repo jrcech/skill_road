@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include ModelOwner
+  include ModelConcern
 
-  helper ModelOwner
+  helper ModelConcern
 
   before_action :set_locale
 

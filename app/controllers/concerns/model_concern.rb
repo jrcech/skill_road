@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
-module ModelOwner
+module ModelConcern
   extend ActiveSupport::Concern
+
+  def model_plural
+    model.to_s.pluralize
+  end
+
+  def model_plural_symbol
+    model_plural.underscore.to_sym
+  end
+
+  private
 
   def model
     case @resources
@@ -12,13 +22,5 @@ module ModelOwner
     else
       controller_name.classify.safe_constantize
     end
-  end
-
-  def model_plural
-    model.to_s.pluralize
-  end
-
-  def model_plural_symbol
-    model_plural.underscore.to_sym
   end
 end
