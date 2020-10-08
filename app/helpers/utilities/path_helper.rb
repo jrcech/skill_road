@@ -26,6 +26,10 @@ module Utilities
       action == :destroy
     end
 
+    def current_path
+      "#{controller_namespace}_#{controller_plural_symbol}_path"
+    end
+
     private
 
     def action_prefix?
