@@ -8,7 +8,27 @@ module Utilities
       @options = options
       @icon = icon
 
-      "<i class='#{construct_class}'></i>#{text}".html_safe
+      "<i class='#{construct_class}'#{construct_data}#{construct_title}></i>#{text}".html_safe
+    end
+
+    def construct_data
+      return nil if options[:data].blank?
+
+      construct_data_string
+    end
+
+    def construct_data_string
+      data = +''
+      options[:data].each do |key, value|
+        data << "data-#{key}='#{value}'"
+      end
+
+      data
+    end
+
+    def construct_title
+      title = options[:title]
+      "data-original-title='#{title}'" if title.present?
     end
 
     def model_icon(model)
@@ -21,7 +41,7 @@ module Utilities
       icons['actions'][model.to_s]
     end
 
-    def search_icon_for(title)
+    def search_icon(title)
       tooltip = tooltip t('tooltips.search'), 'search', { class: 'minor' }
       "#{title} #{tooltip}".html_safe
     end
