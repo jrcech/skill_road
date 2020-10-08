@@ -2,8 +2,52 @@
 en:
   hello: "Hello world"
   models:
+    roles:
+      one: "Role"
+      more: "Roles"
     users:
       one: "User"
       more: "Users"
   actions:
     new: "New %{item}"
+    edit: "Edit"
+    destroy: "Destroy"
+  confirmations:
+    destroy:
+      title: "Confirm %{model} destruction"
+      confirm: "Do you really want to delete %{item}? There is no undo!"
+      commit: "Yes, delete %{model}"
+      cancel: "No"
+    reset_money:
+      title: "Confirm %{model} money reset"
+      confirm: "Do you really want to reset all money fields in %{item} and it's nested items? There is no undo!"
+      commit: "Yes, reset money in %{model}"
+      cancel: "No"
+    make_member:
+      title: "Confirm demoting %{item} to member"
+      confirm: "Do you really want to demote %{item} to member?"
+      commit: "Yes, demote to member"
+      cancel: "No"
+    make_owner:
+      title: "Confirm promoting %{item} to product owner"
+      confirm: "Do you really want to promote %{item} to product owner?"
+      commit: "Yes, promote to product owner"
+      cancel: "No"
+  tables:
+    headings:
+      title: "Title"
+      updated_at: "Updated at"
+      approved: "Approved"
+      optional: "Optional"
+      type: "Type"
+      date: "Date"
+      from: "From"
+      to: "To"
+      icon: "Icon"
+      name: "Name"
+      email: "E-Mail"
+      roles: "Roles"
+  tooltips:
+    search: "This column is used in search"
+    remove: "Remove"
+    users: "Users"

@@ -21,6 +21,11 @@ module Utilities
       icons['actions'][model.to_s]
     end
 
+    def search_icon_for(title)
+      tooltip = tooltip t('tooltips.search'), 'search', { class: 'minor' }
+      "#{title} #{tooltip}".html_safe
+    end
+
     private
 
     def construct_class

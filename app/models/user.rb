@@ -81,4 +81,16 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  alias title full_name
+
+  def role
+    if has_role?(:admin)
+      :admin
+    elsif has_role?(:owner)
+      :owner
+    else
+      :member
+    end
+  end
 end

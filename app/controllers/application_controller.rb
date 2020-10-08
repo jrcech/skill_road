@@ -2,8 +2,10 @@
 
 class ApplicationController < ActionController::Base
   include ModelConcern
+  include PathConcern
 
   helper ModelConcern
+  helper PathConcern
 
   before_action :set_locale
 

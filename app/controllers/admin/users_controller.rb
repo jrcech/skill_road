@@ -2,6 +2,8 @@
 
 module Admin
   class UsersController < AdminController
-    def index; end
+    def index
+      @items = User.order(updated_at: :desc)
+    end
   end
 end

@@ -17,3 +17,33 @@ ruby:
   action_buttons: action_buttons,
   header_buttons: nil,
   link_buttons: nil
+
+ruby:
+  thead = [
+    search_icon_for(t('tables.headings.name')),
+    search_icon_for(t('tables.headings.email')),
+    t('models.roles.one')
+  ]
+
+  tbody = []
+  @items.each do |item|
+    @item = item
+
+    tbody << {
+      cells: [
+        highlight(item.full_name, @query),
+        highlight(item.email, @query),
+        item.role.to_s.titleize
+      ],
+      buttons: [
+        ellipsis_button(
+          edit_button,
+          dropdown_separator,
+          destroy_button
+        )
+      ],
+      detail_path: path_for(:show)
+    }
+  end
+
+== render 'application/components/index_table', thead: thead, tbody: tbody
