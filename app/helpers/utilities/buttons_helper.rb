@@ -27,7 +27,7 @@ module Utilities
         title: t('actions.destroy'),
         path: path_for(:destroy),
         icon: action_icon(:destroy),
-        classes: bootstrap_class('danger'),
+        class: bootstrap_class('danger'),
         method: :delete,
         data: destroy_button_confirmation
       }

@@ -11,6 +11,8 @@ module PathConcern
     send_path
   end
 
+  private
+
   def show?
     action == :show
   end
@@ -26,8 +28,6 @@ module PathConcern
   def destroy?
     action == :destroy
   end
-
-  private
 
   def action_prefix?
     return true if new? || edit?
@@ -60,8 +60,8 @@ module PathConcern
   end
 
   def return_to_for_destroy_index
-    return 'parent' if !model_nested? && @items.blank? && model_controller_plural_same?
-    return 'parent' if model_nested? && !model_controller_plural_same? && canonical_parent?
+    return 'parent' if !model_nested? && @items.blank? && model_controller_same?
+    return 'parent' if model_nested? && !model_controller_same? && canonical_parent?
 
     nil
   end
@@ -69,7 +69,7 @@ module PathConcern
   def return_to_for_destroy
     return return_to_for_destroy_index if action_name == 'index'
     return 'parent' if action_name == 'show' && canonical_parent?
-    return "#{model_parent}_#{model_parent_id}" if model_nested? && model_controller_plural_same?
+    return "#{model_parent}_#{model_parent_id}" if model_nested? && model_controller_same?
 
     nil
   end
