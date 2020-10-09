@@ -1,2 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'modules/frontend_test';
+
+/* stylelint-disable */
+.pagination {
+  @extend .float-right;
+}
+/* stylelint-enable */

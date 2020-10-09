@@ -4,5 +4,6 @@ export default class extends Controller {
   // eslint-disable-next-line class-methods-use-this
   connect() {
     $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover();
   }
 }
