@@ -20,21 +20,6 @@ en:
       confirm: "Do you really want to delete %{item}? There is no undo!"
       commit: "Yes, delete %{model}"
       cancel: "No"
-    reset_money:
-      title: "Confirm %{model} money reset"
-      confirm: "Do you really want to reset all money fields in %{item} and it's nested items? There is no undo!"
-      commit: "Yes, reset money in %{model}"
-      cancel: "No"
-    make_member:
-      title: "Confirm demoting %{item} to member"
-      confirm: "Do you really want to demote %{item} to member?"
-      commit: "Yes, demote to member"
-      cancel: "No"
-    make_owner:
-      title: "Confirm promoting %{item} to product owner"
-      confirm: "Do you really want to promote %{item} to product owner?"
-      commit: "Yes, promote to product owner"
-      cancel: "No"
   tables:
     headings:
       title: "Title"
