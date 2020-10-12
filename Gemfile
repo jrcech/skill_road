@@ -24,6 +24,7 @@ end
 
 gem 'devise'
 gem 'email_validator'
+gem 'gretel'
 gem 'mailgun-ruby'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'

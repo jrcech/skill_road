@@ -152,6 +152,9 @@ GEM
       archive-zip (~> 0.7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (4.1.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
     http-cookie (1.0.3)
@@ -458,6 +461,7 @@ DEPENDENCIES
   fasterer
   flay
   geckodriver-helper
+  gretel
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.2)

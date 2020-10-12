@@ -24,5 +24,6 @@ html lang="en"
     == render 'application/navigation/navigation'
 
     div class="container" data-controller="application"
+      == render 'application/components/breadcrumbs'
       = flash_messages
       == yield
