@@ -4,14 +4,22 @@ module Admin
   class UsersController < AdminController
     include Searchable
 
+    attr_reader :relation
+
     def index
+      index_relation
+
       @pagy, @items = pagy(
-        User.order(updated_at: :desc),
+        @relation,
         page: params[:page],
-        items: params[:items],
-        size: [1, 4, 4, 1],
-        per_page: [5, 10, 20, 50, 100]
+        items: params[:items]
       )
+    end
+
+    private
+
+    def index_relation
+      @relation = User.order(updated_at: :desc)
     end
   end
 end

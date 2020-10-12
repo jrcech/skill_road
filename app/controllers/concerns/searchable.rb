@@ -4,14 +4,14 @@ module Searchable
   extend ActiveSupport::Concern
 
   def search
+    index_relation
+
     @query = params[:query]
 
     @pagy, @items = pagy(
-      User.search_by(@query).order(updated_at: :desc),
+      @relation.search_by(@query),
       page: params[:page],
-      items: params[:items],
-      size: [1, 4, 4, 1],
-      per_page: [5, 10, 20, 50, 100]
+      items: params[:items]
     )
 
     render :index
