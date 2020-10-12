@@ -5,6 +5,7 @@ AllCops:
     - 'bin/*'
     - 'node_modules/**/*'
     - 'db/schema.rb'
+    - 'config/initializers/*'
 Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
@@ -23,6 +24,3 @@ Metrics/AbcSize:
 Style/MixinUsage:
   Exclude:
     - 'db/seeds.rb'
-Lint/EmptyFile:
-  Exclude:
-    - 'config/initializers/*'

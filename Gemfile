@@ -30,6 +30,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'pagy'
 gem 'rolify'
+gem 'simple_form'
 gem 'slim-rails'
 
 group :development do
