@@ -1,14 +1,26 @@
 / frozen_string_literal: true
 
+ruby:
+  nav_items = [
+    {
+      path: admin_root_path,
+      title: 'Dashboard',
+      controller: 'dashboard'
+    },
+    {
+      path: admin_users_path,
+      title: fa_icon(model_icon(:users), text: t('models.users.more')),
+      controller: 'users'
+    }
+  ]
+
 ul class="navbar-nav mr-auto"
 
-  li class="nav-item"
-    a class="nav-link" href=admin_root_path
-      | Home
-      span class="sr-only" (current)
+  - nav_items.each do |nav_item|
+    - @nav_item = nav_item
 
-  li class="nav-item active"
-    a [
-      href=admin_users_path
-      class="nav-link"
-    ] = fa_icon(model_icon(:users), text: t('models.users.more'))
+    li class="nav-item#{active_class}"
+      a [
+        href=nav_item[:path]
+        class="nav-link"
+      ] = nav_item[:title]

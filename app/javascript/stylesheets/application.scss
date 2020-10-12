@@ -12,6 +12,10 @@ mark {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .dropdown > a:focus {
   box-shadow: none;
   outline: none;
