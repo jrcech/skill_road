@@ -15,15 +15,15 @@ module Utilities
     private
 
     def construct_tooltip
-      options ||= { class: nil, placement: :top }
+      tooltip_options ||= { class: nil, placement: :top }
 
       fa_icon(
         tooltip_icon,
         title: tooltip_title,
-        class: options[:class],
+        class: tooltip_options[:class],
         data: {
           toggle: :tooltip,
-          placement: options[:placement]
+          placement: tooltip_options[:placement]
         }
       )
     end

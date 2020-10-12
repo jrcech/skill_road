@@ -5,5 +5,8 @@ crumb :root do
 end
 
 crumb :users do
-  link 'Users', admin_users_path
+  link(
+    tooltip(t('models.users.more'), model_icon(:users)),
+    admin_users_path
+  )
 end
