@@ -12,16 +12,14 @@ footer class="row"
         aria-haspopup="true"
         aria-expanded="false"
       ]
-        = pagy.vars[:items]
-        '
-        ' items per page
+        = "#{pagy.vars[:items]} items per page"
 
       div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
         - pagy.vars[:per_page].each do |per_page|
           - @per_page = per_page
 
           = link_to per_page,
-            path_for(:search),
+            per_page_path,
             class: 'dropdown-item'
 
   div class="col-md"

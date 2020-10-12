@@ -30,14 +30,20 @@ module Utilities
       action == :search
     end
 
+    def per_page_path
+      return path_for(:search) if action_name == 'search'
+
+      current_path
+    end
+
     def current_path
-      "#{controller_namespace}_#{controller_plural_symbol}_path"
+      send "#{controller_namespace}_#{controller_plural_symbol}_path", merge_per_page_parameters
     end
 
     private
 
     def send_path
-      return send construct_path, search_parameters if search?
+      return send construct_path, merge_per_page_parameters if search?
       return send construct_path, item if show?
 
       send construct_path, item, { return_to: return_to }
@@ -96,9 +102,14 @@ module Utilities
       nil
     end
 
-    def search_parameters
+    def merge_per_page_parameters
       query_parameters = request.query_parameters
-      query_parameters.merge({ items: per_page })
+      query_parameters.merge(
+        {
+          items: per_page,
+          page: 1
+        }
+      )
     end
   end
 end
