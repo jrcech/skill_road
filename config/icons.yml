@@ -1,5 +1,5 @@
 models:
-  users: 'user-circle'
+  users: 'users'
   articles: 'briefcase'
 actions:
   related: 'share'

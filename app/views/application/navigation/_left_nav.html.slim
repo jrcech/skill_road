@@ -2,34 +2,13 @@
 
 ul class="navbar-nav mr-auto"
 
-  li class="nav-item active"
-    a class="nav-link" href="#"
+  li class="nav-item"
+    a class="nav-link" href=admin_root_path
       | Home
       span class="sr-only" (current)
 
-  li class="nav-item"
-    a class="nav-link" href="#" Link
-
-  li class="nav-item dropdown"
+  li class="nav-item active"
     a [
-      id="navbarDropdown"
-      href="#"
-      class="nav-link dropdown-toggle"
-      role="button"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    ] Dropdown
-    div class="dropdown-menu" aria-labelledby="navbarDropdown"
-      a href="#" class="dropdown-item" Action
-      a href="#" class="dropdown-item" Another action
-      div class="dropdown-divider"
-      a href="#" class="dropdown-item" Something else here
-
-  li class="nav-item"
-    a [
-      href="#"
-      class="nav-link disabled"
-      tabindex="-1"
-      aria-disabled="true"
-    ] Disabled
+      href=admin_users_path
+      class="nav-link"
+    ] = fa_icon(model_icon(:users), text: t('models.users.more'))
