@@ -27,4 +27,4 @@ table class="table table-striped table-hover"
           - if row[:buttons]
             == render 'application/components/buttons',
               buttons: row[:buttons],
-              title: nil
+              title: row[:title]

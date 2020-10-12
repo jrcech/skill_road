@@ -27,7 +27,7 @@ RSpec.describe 'Frontend test', type: :system do
   end
 
   it 'ensures font awesome is loaded', js: true do
-    expect(page).to have_css 'svg.fa-check', visible: :visible
+    expect(page).to have_css 'i.fa-check', visible: :visible
   end
 
   describe 'bootstrap components' do

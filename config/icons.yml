@@ -5,7 +5,7 @@ actions:
   related: 'share'
   options: 'cogs'
   details: 'info'
-  edit: 'pencil'
+  edit: 'pen'
   new: 'plus'
   destroy: 'trash'
   archive: 'archive'
