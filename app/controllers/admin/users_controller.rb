@@ -2,6 +2,8 @@
 
 module Admin
   class UsersController < AdminController
+    include Searchable
+
     def index
       @pagy, @items = pagy(
         User.order(updated_at: :desc),

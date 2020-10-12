@@ -58,6 +58,13 @@ class User < ApplicationRecord
     omniauth_providers: %i[facebook google]
   )
 
+  scope :search_by, (lambda { |query|
+    where('users.email ILIKE ? OR users.first_name ILIKE ? OR users.last_name ILIKE ?',
+          "%#{query.to_s.downcase}%",
+          "%#{query.to_s.downcase}%",
+          "%#{query.to_s.downcase}%")
+  })
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       process_user(user, auth)

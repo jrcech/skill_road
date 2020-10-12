@@ -2,7 +2,7 @@
 
 module Utilities
   module PathsHelper
-    attr_reader :item, :action
+    attr_reader :item, :action, :per_page
 
     def path_for(action)
       @action = action
@@ -35,6 +35,13 @@ module Utilities
     end
 
     private
+
+    def send_path
+      return send construct_path, search_parameters if search?
+      return send construct_path, item if show?
+
+      send construct_path, item, { return_to: return_to }
+    end
 
     def construct_path
       path = +''
@@ -89,10 +96,9 @@ module Utilities
       nil
     end
 
-    def send_path
-      return send construct_path, item if show?
-
-      send construct_path, item, { return_to: return_to }
+    def search_parameters
+      query_parameters = request.query_parameters
+      query_parameters.merge({ items: per_page })
     end
   end
 end
