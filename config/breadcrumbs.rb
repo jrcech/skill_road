@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 crumb :root do
-  link 'Home', admin_root_path
+  link t('controller.dashboard'), admin_root_path
 end
 
 crumb :users do

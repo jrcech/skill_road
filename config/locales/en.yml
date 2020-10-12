@@ -8,6 +8,8 @@ en:
     users:
       one: "User"
       more: "Users"
+  controller:
+    dashboard: "Dashboard"
   actions:
     new: "New %{item}"
     edit: "Edit"
