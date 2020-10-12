@@ -16,7 +16,11 @@ ruby:
 div class="row"
   div class="col-md"
 
-    - if primary_buttons
+    - if search.present?
+      == render 'application/components/search_form',
+        query: query
+
+    - if primary_buttons.present?
 
       == render 'application/components/buttons',
         buttons: primary_buttons,
@@ -27,12 +31,12 @@ div class="row"
 
   div class="col-md text-right"
 
-    - if link_buttons
+    - if link_buttons.present?
       == render 'application/components/buttons',
         buttons: link_buttons,
         title: 'Secondary'
 
-    - if action_buttons
+    - if action_buttons.present?
       == render 'application/components/buttons',
         buttons: action_buttons,
         title: header[:title]

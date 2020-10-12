@@ -29,3 +29,8 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+
+    submits:
+      search:
+        title: "Search"
+        disable_with: "Searching..."

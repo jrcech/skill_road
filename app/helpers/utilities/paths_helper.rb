@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Utilities
-  module PathHelper
+  module PathsHelper
     attr_reader :item, :action
 
     def path_for(action)
@@ -26,29 +26,34 @@ module Utilities
       action == :destroy
     end
 
+    def search?
+      action == :search
+    end
+
     def current_path
       "#{controller_namespace}_#{controller_plural_symbol}_path"
     end
 
     private
 
-    def action_prefix?
-      return true if new? || edit?
-
-      false
-    end
-
-    def resource_for_action
-      return controller_singular_symbol if new?
-
-      model_singular_symbol
-    end
-
     def construct_path
       path = +''
       path << "#{action}_" if action_prefix?
       path << resource_namespace if resource_namespaced?
       path << "#{resource_for_action}_path"
+    end
+
+    def action_prefix?
+      return false if show? || destroy?
+
+      true
+    end
+
+    def resource_for_action
+      return model_singular_symbol if show? || edit? || destroy?
+      return controller_singular_symbol if new?
+
+      controller_plural_symbol
     end
 
     def canonical_parent?
