@@ -15,12 +15,4 @@ ruby:
   ]
 
 ul class="navbar-nav mr-auto"
-
-  - nav_items.each do |nav_item|
-    - @nav_item = nav_item
-
-    li class="nav-item#{active_class}"
-      a [
-        href=nav_item[:path]
-        class="nav-link"
-      ] = nav_item[:title]
+  == render 'application/navigation/nav_items', nav_items: nav_items
