@@ -10,7 +10,7 @@ module Admin
       index_relation
 
       @pagy, @items = pagy(
-        @relation,
+        @index_relation,
         page: params[:page],
         items: params[:items]
       )
@@ -19,7 +19,7 @@ module Admin
     private
 
     def index_relation
-      @relation = User.order(updated_at: :desc)
+      @index_relation = User.order(updated_at: :desc)
     end
   end
 end
