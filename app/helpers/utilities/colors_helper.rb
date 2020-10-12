@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Utilities
-  module ColorHelper
+  module ColorsHelper
+    attr_reader :button
+
     def bootstrap_class
       {
         new: 'success',

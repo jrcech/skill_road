@@ -59,7 +59,7 @@ module Utilities
     end
 
     def dropdown_menu_class
-      "dropdown-menu#{dropdown_menu_position}"
+      " dropdown-menu#{dropdown_menu_position}"
     end
 
     def dropdown_menu_position
