@@ -82,7 +82,7 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    add_role(:user) if roles.blank?
+    add_role :user if roles.blank?
   end
 
   def full_name
@@ -92,12 +92,9 @@ class User < ApplicationRecord
   alias title full_name
 
   def role
-    if has_cached_role?(:admin)
-      :admin
-    elsif has_cached_role?(:owner)
-      :owner
-    else
-      :member
-    end
+    return :owner if has_cached_role?(:owner)
+    return :admin if has_cached_role?(:admin)
+
+    :member
   end
 end
