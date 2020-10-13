@@ -7,7 +7,7 @@ module Searchable
     @query = params[:query]
 
     @pagy, @items = pagy(
-      @index_relation.search_by(@query),
+      index_relation.search_by(@query),
       page: params[:page],
       items: params[:items]
     )

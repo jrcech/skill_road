@@ -4,13 +4,11 @@ module Admin
   class UsersController < AdminController
     include Searchable
 
-    attr_reader :relation
-
     before_action :index_relation, only: %i[index search]
 
     def index
       @pagy, @items = pagy(
-        @index_relation,
+        index_relation,
         page: params[:page],
         items: params[:items]
       )
