@@ -97,4 +97,19 @@ class User < ApplicationRecord
 
     :member
   end
+
+  def to_role
+    return :member if role == :admin
+
+    :admin
+  end
+
+  def make_member
+    remove_role(:admin)
+    remove_role(:owner)
+  end
+
+  def make_admin
+    add_role(:admin)
+  end
 end

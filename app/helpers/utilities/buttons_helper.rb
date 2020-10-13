@@ -2,37 +2,37 @@
 
 module Utilities
   module ButtonsHelper
-    attr_reader :button
+    attr_reader :button, :item, :role
 
     def new_button
       {
+        action: :new,
+        path: path_for(:new),
         title: t(
           'actions.new',
           item: t("models.#{model_plural_symbol}.one")
         ),
-        path: path_for(:new),
-        icon: action_icon(:new),
-        action: :new
+        icon: action_icon(:new)
       }
     end
 
     def edit_button
       {
-        title: t('actions.edit'),
+        action: :edit,
         path: path_for(:edit),
-        icon: action_icon(:edit),
-        action: :edit
+        title: t('actions.edit'),
+        icon: action_icon(:edit)
       }
     end
 
     def destroy_button
       {
-        title: t('actions.destroy'),
+        action: :destroy,
         path: path_for(:destroy),
-        icon: action_icon(:destroy),
         method: :delete,
-        data: destroy_button_confirmation,
-        action: :destroy
+        title: t('actions.destroy'),
+        icon: action_icon(:destroy),
+        data: destroy_button_data
       }
     end
 
@@ -44,6 +44,20 @@ module Utilities
         caret: false,
         menu_position: :right,
         dropdown_items: dropdown_items(items)
+      }
+    end
+
+    def role_button
+      return nil if item == current_user
+      return nil if item.has_role?(:owner)
+
+      @role = item.to_role
+      {
+        action: "make_#{@role}".to_sym,
+        path: send("make_#{@role}_admin_user_path", item),
+        title: t("actions.make_#{@role}"),
+        icon: action_icon("make_#{@role}"),
+        data: role_button_data
       }
     end
 
@@ -61,13 +75,25 @@ module Utilities
       'btn btn-primary'
     end
 
-    def destroy_button_confirmation
+    def destroy_button_data
       model_translation = t("models.#{model_plural_symbol}.one")
       {
         title: t('confirmations.destroy.title', model: model_translation),
         confirm: t('confirmations.destroy.confirm', item: item.title),
         commit: t('confirmations.destroy.commit', model: model_translation),
         cancel: t('confirmations.destroy.cancel')
+      }
+    end
+
+    def role_button_data
+      {
+        turbolinks: false,
+        title: t("confirmations.make_#{role}.title",
+                 item: t("models.#{model_plural_symbol}.one")),
+        confirm: t("confirmations.make_#{role}.confirm",
+                   item: item.title),
+        commit: t("confirmations.make_#{role}.commit"),
+        cancel: t("confirmations.make_#{role}.cancel")
       }
     end
   end

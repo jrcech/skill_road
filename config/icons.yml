@@ -12,7 +12,7 @@ actions:
   unarchive: 'archive'
   duplicate: 'files-o'
   make_member: 'angle-double-down'
-  make_owner: 'angle-double-up'
+  make_admin: 'angle-double-up'
   impersonate: 'user-o'
   preview: 'eye'
   export: 'download'

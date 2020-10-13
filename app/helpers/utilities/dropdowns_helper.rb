@@ -13,13 +13,15 @@ module Utilities
     end
 
     def dropdown_items(dropdown_items)
+      dropdown_items.compact!
+
       dropdown_items.each do |dropdown_item|
         next if dropdown_item[:separator].present?
 
         dropdown_item[:dropdown] = true
       end
 
-      dropdown_items.compact
+      dropdown_items
     end
 
     private

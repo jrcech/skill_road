@@ -22,6 +22,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+gem 'action_args'
 gem 'devise'
 gem 'email_validator'
 gem 'gretel'

@@ -2,9 +2,13 @@
 
 - if dropdown_item[:header].present?
   span class="dropdown-header" = dropdown_item[:title]
+
 - elsif dropdown_item[:separator].present?
   div class="dropdown-divider"
+
 - else
   = link_to fa_icon(dropdown_item[:icon], text: dropdown_item[:title]),
     dropdown_item[:path],
-    class: button_class
+    method: dropdown_item[:method],
+    class: button_class,
+    data: dropdown_item[:data]

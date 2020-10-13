@@ -8,7 +8,9 @@ module Utilities
       {
         new: 'success',
         edit: 'primary',
-        destroy: 'danger'
+        destroy: 'danger',
+        make_admin: 'primary',
+        make_member: 'warning'
       }[button[:action]]
     end
   end

@@ -27,4 +27,7 @@ div class="btn-group" role="group" aria-label="#{title} buttons"
     - else
       = link_to fa_icon(button[:icon], text: button[:title]),
         button[:path],
-        class: button_class
+        method: button[:method],
+        class: button_class,
+        data: button[:data],
+        turbolinks: button[:turbolinks]
