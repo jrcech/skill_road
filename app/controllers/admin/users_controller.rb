@@ -6,9 +6,9 @@ module Admin
 
     attr_reader :relation
 
-    def index
-      index_relation
+    before_action :index_relation, only: %i[index search]
 
+    def index
       @pagy, @items = pagy(
         @index_relation,
         page: params[:page],
@@ -19,7 +19,7 @@ module Admin
     private
 
     def index_relation
-      @index_relation = User.order(updated_at: :desc)
+      @index_relation = User.preload(:roles).order(updated_at: :desc)
     end
   end
 end

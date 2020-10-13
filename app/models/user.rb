@@ -92,9 +92,9 @@ class User < ApplicationRecord
   alias title full_name
 
   def role
-    if has_role?(:admin)
+    if has_cached_role?(:admin)
       :admin
-    elsif has_role?(:owner)
+    elsif has_cached_role?(:owner)
       :owner
     else
       :member

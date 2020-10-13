@@ -4,8 +4,6 @@ module Searchable
   extend ActiveSupport::Concern
 
   def search
-    index_relation
-
     @query = params[:query]
 
     @pagy, @items = pagy(
