@@ -7,8 +7,4 @@
   div class="dropdown-divider"
 
 - else
-  = link_to fa_icon(dropdown_item[:icon], text: dropdown_item[:title]),
-    dropdown_item[:path],
-    method: dropdown_item[:method],
-    class: button_class,
-    data: dropdown_item[:data]
+  = button_link

@@ -5,7 +5,7 @@ div class="btn-group" role="group" aria-label="#{title} buttons"
   - buttons.each do |button|
     - @button = button
 
-    - if button.key?(:dropdown_items)
+    - if button.key? :dropdown_items
       a [
         class=button_class
         id=dropdown_button_id(title)
@@ -25,9 +25,4 @@ div class="btn-group" role="group" aria-label="#{title} buttons"
             dropdown_item: dropdown_item
 
     - else
-      = link_to fa_icon(button[:icon], text: button[:title]),
-        button[:path],
-        method: button[:method],
-        class: button_class,
-        data: button[:data],
-        turbolinks: button[:turbolinks]
+      = button_link

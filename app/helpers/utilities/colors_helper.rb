@@ -9,7 +9,7 @@ module Utilities
         new: 'success',
         edit: 'primary',
         destroy: 'danger',
-        make_admin: 'primary',
+        make_admin: 'secondary',
         make_member: 'warning'
       }[button[:action]]
     end

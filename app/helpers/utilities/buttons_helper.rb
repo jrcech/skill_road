@@ -37,13 +37,14 @@ module Utilities
     end
 
     def ellipsis_button(*items)
+      @buttons = items
       {
         title: '',
         icon: 'ellipsis-v',
         class: 'btn btn-light',
         caret: false,
         menu_position: :right,
-        dropdown_items: dropdown_items(items)
+        dropdown_items: dropdown_items
       }
     end
 

@@ -2,7 +2,7 @@
 
 module Utilities
   module DropdownsHelper
-    attr_reader :button
+    attr_reader :buttons, :button
 
     def dropdown_separator
       { separator: true }
@@ -12,16 +12,23 @@ module Utilities
       "#{dropdown_class}#{dropdown_color_class}#{caret_class}"
     end
 
-    def dropdown_items(dropdown_items)
-      dropdown_items.compact!
+    def dropdown_items
+      buttons.compact!
 
-      dropdown_items.each do |dropdown_item|
+      buttons.each do |dropdown_item|
         next if dropdown_item[:separator].present?
 
-        dropdown_item[:dropdown] = true
+        dropdown_item.merge!(dropdown_properties)
       end
 
-      dropdown_items
+      buttons
+    end
+
+    def dropdown_properties
+      {
+        dropdown: true,
+        icon_fixed_width: true
+      }
     end
 
     private
