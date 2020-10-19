@@ -50,7 +50,7 @@ module Utilities
 
     def role_button
       return nil if item == current_user
-      return nil if item.has_role?(:owner)
+      return nil if item.has_cached_role?(:owner)
 
       @role = item.to_role
       {
