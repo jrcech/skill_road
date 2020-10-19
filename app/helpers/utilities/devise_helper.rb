@@ -11,14 +11,14 @@ module Utilities
     def log_in
       return unless controller_name != 'sessions'
 
-      construct_link('log_in', 'session')
+      construct_link 'log_in', 'session'
     end
 
     def sign_up
       return unless devise_mapping.registerable?
       return unless controller_name != 'registrations'
 
-      construct_link('sign_up', 'registration')
+      construct_link 'sign_up', 'registration'
     end
 
     def forgot_password
@@ -26,22 +26,22 @@ module Utilities
       return unless controller_name != 'passwords'
       return unless controller_name != 'registrations'
 
-      construct_link('forgot_password', 'password')
+      construct_link 'forgot_password', 'password'
     end
 
     def confirmation_instructions
       return unless devise_mapping.confirmable?
       return unless controller_name != 'confirmations'
 
-      construct_link('confirmation_instructions', 'confirmation')
+      construct_link 'confirmation_instructions', 'confirmation'
     end
 
     def unlock_instructions
       return unless devise_mapping.lockable?
-      return unless resource_class.unlock_strategy_enabled?(:email)
+      return unless resource_class.unlock_strategy_enabled? :email
       return unless controller_name != 'unlocks'
 
-      construct_link('unlock_instructions', 'unlock')
+      construct_link 'unlock_instructions', 'unlock'
     end
 
     def sign_in_with_provider

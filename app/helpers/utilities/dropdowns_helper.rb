@@ -34,13 +34,13 @@ module Utilities
     private
 
     def dropdown_class
-      return nil unless button.key?(:dropdown)
+      return nil unless button.key? :dropdown
 
       ' dropdown-item'
     end
 
     def dropdown_color_class
-      return nil unless button.key?(:dropdown)
+      return nil unless button.key? :dropdown
       return " text-#{bootstrap_class}" if bootstrap_class.present?
 
       nil
@@ -56,7 +56,7 @@ module Utilities
       button_icon = button[:icon]
       button_title = button[:title]
 
-      return fa_icon(button_icon, text: button_title) if button_icon.present?
+      return fa_icon button_icon, text: button_title if button_icon.present?
 
       button_title
     end

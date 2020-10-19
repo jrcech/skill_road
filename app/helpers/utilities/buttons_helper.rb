@@ -50,7 +50,7 @@ module Utilities
 
     def role_button
       return nil if item == current_user
-      return nil if item.has_cached_role?(:owner)
+      return nil if item.has_cached_role? :owner
 
       @role = item.to_role
       {
@@ -69,8 +69,8 @@ module Utilities
     private
 
     def construct_button_class
-      return nil if button.key?(:dropdown)
-      return button[:class] if button.key?(:class)
+      return nil if button.key? :dropdown
+      return button[:class] if button.key? :class
       return "btn btn-#{bootstrap_class}" if bootstrap_class.present?
 
       'btn btn-primary'

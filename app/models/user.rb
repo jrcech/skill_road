@@ -92,8 +92,8 @@ class User < ApplicationRecord
   alias title full_name
 
   def role
-    return :owner if has_cached_role?(:owner)
-    return :admin if has_cached_role?(:admin)
+    return :owner if has_cached_role? :owner
+    return :admin if has_cached_role? :admin
 
     :member
   end
@@ -105,11 +105,11 @@ class User < ApplicationRecord
   end
 
   def make_member
-    remove_role(:admin)
-    remove_role(:owner)
+    remove_role :admin
+    remove_role :owner
   end
 
   def make_admin
-    add_role(:admin)
+    add_role :admin
   end
 end
