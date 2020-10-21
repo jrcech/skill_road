@@ -14,6 +14,10 @@ en:
     new: "New %{item}"
     edit: "Edit"
     destroy: "Destroy"
+  headers:
+    new: "New %{item}"
+    edit: "Edit %{item}"
+    edit_nested: "Edit %{item} %{nested_items}"
   confirmations:
     destroy:
       title: "Confirm %{model} destruction"

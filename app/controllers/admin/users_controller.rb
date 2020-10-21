@@ -7,12 +7,33 @@ module Admin
     before_action :index_relation, only: %i[index search]
     before_action :load_item, only: %i[destroy make_member make_admin]
 
+    permits(
+      :email,
+      :first_name,
+      :last_name,
+      :username
+    )
+
     def index
       @pagy, @items = pagy(
         index_relation,
         page: params[:page],
         items: params[:items]
       )
+    end
+
+    def new
+      @item = User.new
+    end
+
+    def create(user)
+      @item = User.new(user)
+
+      if @item.save
+        redirect_to admin_users_path, notice: 'Application was successfully created.'
+      else
+        render :new
+      end
     end
 
     def destroy
