@@ -11,7 +11,9 @@ module Admin
       :email,
       :first_name,
       :last_name,
-      :username
+      :username,
+      :password,
+      :password_confirmation
     )
 
     def index
@@ -29,7 +31,7 @@ module Admin
     def create(user)
       @item = User.new(user)
 
-      if @item.save
+      if @item.skip_confirmation_notification! && @item.save
         redirect_to admin_users_path, notice: 'Application was successfully created.'
       else
         render :new
