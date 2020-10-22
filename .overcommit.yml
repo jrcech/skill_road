@@ -23,7 +23,6 @@ PreCommit:
     enabled: true
   RailsBestPractices:
     enabled: true
-    command: ['rails_best_practices']
     flags: ['-c', 'rails_best_practices.yml']
   Reek:
     enabled: true
