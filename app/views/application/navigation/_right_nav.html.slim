@@ -1,14 +1,6 @@
 / frozen_string_literal: true
 
 ruby:
-  available_locales = []
-  I18n.available_locales.each do |available_local|
-    available_locales << {
-      title: locale_name(available_local).capitalize,
-      path: url_for(locale: available_local)
-    }
-  end
-
   nav_items = [
     {
       title: I18n.locale.upcase,

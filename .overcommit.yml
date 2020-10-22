@@ -23,7 +23,11 @@ PreCommit:
     enabled: true
   RailsBestPractices:
     enabled: true
-    flags: ['-c', 'rails_best_practices.yml']
+    command:
+      - 'rails_best_practices'
+      - '.'
+      - '-c'
+      - '.rails_best_practices.yml'
   Reek:
     enabled: true
   RuboCop:
