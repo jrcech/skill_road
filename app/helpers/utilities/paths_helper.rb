@@ -10,24 +10,19 @@ module Utilities
       send_path
     end
 
-    def show?
-      action == :show
-    end
+    path_actions = %i[
+      index
+      show
+      new
+      edit
+      destroy
+      search
+    ]
 
-    def new?
-      action == :new
-    end
-
-    def edit?
-      action == :edit
-    end
-
-    def destroy?
-      action == :destroy
-    end
-
-    def search?
-      action == :search
+    path_actions.each do |path_action|
+      define_method("#{path_action}?") do
+        action == path_action
+      end
     end
 
     def per_page_path
@@ -45,6 +40,7 @@ module Utilities
     def send_path
       return send construct_path, merge_per_page_parameters if search?
       return send construct_path, item if show?
+      return send construct_path if index?
 
       send construct_path, item, { return_to: return_to }
     end
@@ -57,7 +53,7 @@ module Utilities
     end
 
     def action_prefix?
-      return false if show? || destroy?
+      return false if index? || show? || destroy?
 
       true
     end

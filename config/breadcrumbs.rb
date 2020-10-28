@@ -4,9 +4,27 @@ crumb :root do
   link t('controller.dashboard'), admin_root_path
 end
 
-crumb :users do
+crumb :items do
   link(
-    tooltip(t('models.users.more'), model_icon(:users)),
-    admin_users_path
+    tooltip(
+      t("models.#{model_plural_symbol}.more"),
+      model_icon(model_plural_symbol)
+    ),
+    path_for(:index)
   )
+end
+
+crumb :item do |item|
+  link item.title, path_for(:show)
+  parent :items
+end
+
+crumb :new do
+  link t('actions.new', item: model_singular), path_for(:new)
+  parent :items
+end
+
+crumb :edit do |item|
+  link t('actions.edit'), path_for(:edit)
+  parent :item, item
 end
