@@ -14,7 +14,9 @@ Metrics/BlockLength:
     - 'lib/tasks/auto_annotate_models.rake'
   ExcludedMethods:
     - 'describe'
+    - 'context'
     - 'shared_examples'
+    - 'draw'
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'

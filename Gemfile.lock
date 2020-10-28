@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    action_args (2.5.0)
     actioncable (6.0.3.4)
       actionpack (= 6.0.3.4)
       nio4r (~> 2.0)
@@ -79,7 +78,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.4.8)
+    bootsnap (1.4.9)
       msgpack (~> 1.0)
     brakeman (4.10.0)
     builder (3.2.4)
@@ -321,7 +320,7 @@ GEM
     rolify (5.3.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-expectations (3.9.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
@@ -335,7 +334,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     rubocop (0.93.1)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -345,7 +344,7 @@ GEM
       rubocop-ast (>= 0.6.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.0.0)
+    rubocop-ast (1.1.0)
       parser (>= 2.7.1.5)
     rubocop-rspec (1.44.1)
       rubocop (~> 0.87)
@@ -379,7 +378,7 @@ GEM
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.19.0)
+    simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.3)
@@ -448,7 +447,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  action_args
   amazing_print
   annotate
   better_errors

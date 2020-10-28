@@ -4,77 +4,103 @@ module Admin
   class UsersController < AdminController
     include Searchable
 
-    before_action :index_relation, only: %i[index search]
-    before_action :load_item, only: %i[destroy make_member make_admin]
-
-    permits(
-      :email,
-      :first_name,
-      :last_name,
-      :username,
-      :password,
-      :password_confirmation
+    before_action(
+      :set_item,
+      only: %i[
+        show
+        edit
+        update
+        destroy
+        make_member
+        make_admin
+      ]
     )
+
+    before_action :set_items, only: %i[index search]
 
     def index
       @pagy, @items = pagy(
-        index_relation,
+        @items,
         page: params[:page],
         items: params[:items]
       )
     end
 
+    def show; end
+
     def new
       @item = User.new
     end
 
-    def create(user)
-      @item = User.new(user)
+    def edit; end
+
+    def create
+      @item = User.new(user_params)
 
       if @item.skip_confirmation_notification! && @item.save
-        redirect_to admin_users_path, notice: 'Application was successfully created.'
+        flash[:success] = t('success.create', model: helpers.model_singular)
+
+        redirect_to admin_users_path
       else
         render :new
       end
     end
 
+    def update
+      if @item.update user_params
+        flash[:success] = t('success.update', model: helpers.model_singular)
+
+        redirect_to admin_users_path
+      else
+        @return_to = params[:return_to]
+
+        render :edit
+      end
+    end
+
     def destroy
-      @item.destroy
+      if @item == current_user
+        flash[:error] = t('errors.destroy_yourself')
+      elsif @item.destroy
+        flash[:success] = t('success.destroy', model: helpers.model_singular)
+      else
+        flash[:error] = t('errors.destroy')
+      end
 
-      redirect_back(
-        fallback_location: admin_users_path,
-        notice: 'User was successfully destroyed.'
-      )
+      redirect_back fallback_location: admin_users_path
     end
 
-    def make_member
-      notice = if @item.make_member
-                 'User role was successfully changed to member'
-               else
-                 'User role cannot be changed'
-               end
+    %w[member admin].each do |role|
+      define_method("make_#{role}") do
+        if @item.send("make_#{role}")
+          flash[:success] = t('success.change_role', role: role)
+        else
+          flash[:error] = t('errors.change_role')
+        end
 
-      redirect_back fallback_location: admin_users_path, notice: notice
-    end
-
-    def make_admin
-      notice = if @item.make_admin
-                 'User role was successfully changed to admin'
-               else
-                 'User role cannot be changed'
-               end
-
-      redirect_back fallback_location: admin_users_path, notice: notice
+        redirect_back fallback_location: admin_users_path
+      end
     end
 
     private
 
-    def index_relation
-      @index_relation = User.preload(:roles).order(updated_at: :desc)
+    def set_items
+      @items = User.preload(:roles).order(updated_at: :desc)
     end
 
-    def load_item(id)
-      @item = User.find(id)
+    def set_item
+      @item = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(
+        :email,
+        :first_name,
+        :last_name,
+        :username,
+        :password,
+        :password_confirmation
+      )
     end
   end
 end

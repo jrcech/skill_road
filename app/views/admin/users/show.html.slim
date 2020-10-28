@@ -1,0 +1,25 @@
+ruby:
+  header = {
+    title: @item.title,
+    icon: model_icon(model_plural_symbol)
+  }
+
+  action_buttons = [
+    ellipsis_button(
+      edit_button,
+      dropdown_separator,
+      destroy_button
+    )
+  ]
+
+== render 'application/components/header',
+  resource: @item,
+  pagy: @pagy,
+  query: @query,
+  main_header: true,
+  header: header,
+  search: false,
+  primary_buttons: nil,
+  action_buttons: action_buttons,
+  header_buttons: nil,
+  link_buttons: nil
