@@ -10,11 +10,7 @@ export default class extends Controller {
 
     // eslint-disable-next-line func-names
     $("[data-link]").on("click", function (e) {
-      if (
-        $(e.target).not(
-          ".dropdown-toggle, .dropdown-menu *, .dropdown-toggle *, span"
-        ).length
-      ) {
+      if (e.target === this) {
         Turbolinks.visit($(this).data("link"));
       }
     });

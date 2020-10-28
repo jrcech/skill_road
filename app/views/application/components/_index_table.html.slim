@@ -17,7 +17,7 @@ table class="index-table table table-striped table-hover"
           td data-link=row[:detail_path] class="align-middle"
             span = cell
 
-        td class="text-right \
+        td data-link=row[:detail_path] class="align-middle" class="text-right \
           vertical-align \
           #{row[:archived] ? 'text-muted' : nil}"
 

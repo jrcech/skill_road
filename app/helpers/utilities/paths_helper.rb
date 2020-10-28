@@ -31,11 +31,11 @@ module Utilities
       current_path
     end
 
+    private
+
     def current_path
       send "#{controller_namespace}_#{controller_plural_symbol}_path", merge_per_page_parameters
     end
-
-    private
 
     def send_path
       return send construct_path, merge_per_page_parameters if search?
