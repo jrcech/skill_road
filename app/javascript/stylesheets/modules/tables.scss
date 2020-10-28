@@ -1,5 +1,9 @@
-.index-table tbody tr {
-  &:hover {
+.index-table {
+  tbody tr:hover {
     cursor: pointer;
+  }
+
+  span:hover {
+    cursor: auto;
   }
 }

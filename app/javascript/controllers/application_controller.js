@@ -12,7 +12,7 @@ export default class extends Controller {
     $("[data-link]").on("click", function (e) {
       if (
         $(e.target).not(
-          ".dropdown-toggle, .dropdown-menu a, .dropdown-menu li, .dropdown-toggle span"
+          ".dropdown-toggle, .dropdown-menu a, .dropdown-menu li, .dropdown-toggle span, span"
         ).length
       ) {
         Turbolinks.visit($(this).data("link"));
