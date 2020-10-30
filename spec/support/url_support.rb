@@ -18,6 +18,15 @@ module UrlSupport
 
   private
 
+  def construct_url
+    url = +''
+    url << "#{action}_" if action_prefix?
+    url << "#{namespace}_" if namespace.present?
+    url << "#{format_resource}_url"
+
+    url
+  end
+
   url_actions = %i[
     index
     show
@@ -34,15 +43,6 @@ module UrlSupport
 
       false
     end
-  end
-
-  def construct_url
-    url = +''
-    url << "#{action}_" if action_prefix?
-    url << "#{namespace}_" if namespace.present?
-    url << "#{format_resource}_url"
-
-    url
   end
 
   def action_prefix?

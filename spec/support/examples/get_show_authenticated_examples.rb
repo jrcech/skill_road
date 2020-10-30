@@ -2,10 +2,10 @@
 
 RSpec.shared_examples 'GET /show authenticated' do
   describe 'GET /show' do
+    let(:factory) { create resource_singular_symbol }
+
     context 'with a guest' do
       before do
-        factory = create resource_singular_symbol
-
         get url_for action: :show, id: factory.id
       end
 
@@ -21,7 +21,6 @@ RSpec.shared_examples 'GET /show authenticated' do
     context 'with an authenticated user' do
       before do
         sign_in_user
-        factory = create resource_singular_symbol
 
         get url_for action: :show, id: factory.id
       end
