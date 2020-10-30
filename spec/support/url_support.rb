@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 module UrlSupport
-  attr_reader :action
+  attr_reader :action, :id
 
   def url_for(options = {})
     @action = options[:action]
+    @id = options[:id]
 
-    construct_url
+    send_url
+  end
+
+  def send_url
+    return send construct_url, id: id if show? || edit?
+
+    send construct_url
   end
 
   private

@@ -4,7 +4,7 @@ RSpec.shared_examples 'GET /new authenticated' do
   describe 'GET /new' do
     context 'with a guest' do
       before do
-        get send(url_for(action: :new))
+        get url_for(action: :new)
       end
 
       it 'responds successfully' do
@@ -20,7 +20,7 @@ RSpec.shared_examples 'GET /new authenticated' do
       before do
         sign_in_user
 
-        get send(url_for(action: :new))
+        get url_for(action: :new)
       end
 
       it 'responds successfully' do

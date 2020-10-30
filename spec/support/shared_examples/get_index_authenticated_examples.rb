@@ -4,7 +4,7 @@ RSpec.shared_examples 'GET /index authenticated' do
   describe 'GET /index' do
     context 'with a guest' do
       before do
-        get send(url_for(action: :index))
+        get url_for(action: :index)
       end
 
       it 'responds successfully' do
@@ -20,7 +20,7 @@ RSpec.shared_examples 'GET /index authenticated' do
       before do
         sign_in_user
 
-        get send(url_for(action: :index))
+        get url_for(action: :index)
       end
 
       it 'responds successfully' do

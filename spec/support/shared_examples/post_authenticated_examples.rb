@@ -12,7 +12,7 @@ RSpec.shared_examples 'POST authenticated' do
       context 'with valid attributes' do
         it 'adds a resource' do
           expect do
-            post send(url_for(action: :create)), params: { user: valid_attributes }
+            post url_for(action: :create), params: { user: valid_attributes }
           end.to change(model.all, :count).by(1)
         end
       end
@@ -20,7 +20,7 @@ RSpec.shared_examples 'POST authenticated' do
       context 'with invalid attributes' do
         it 'does not add a resource' do
           expect do
-            post send(url_for(action: :create)), params: { user: invalid_attributes }
+            post url_for(action: :create), params: { user: invalid_attributes }
           end.not_to change(model.all, :count)
         end
       end
@@ -30,7 +30,7 @@ RSpec.shared_examples 'POST authenticated' do
       context 'with valid attributes' do
         it 'does not add a resource' do
           expect do
-            post send(url_for(action: :create)), params: { user: valid_attributes }
+            post url_for(action: :create), params: { user: valid_attributes }
           end.not_to change(model.all, :count)
         end
       end
@@ -38,7 +38,7 @@ RSpec.shared_examples 'POST authenticated' do
       context 'with invalid attributes' do
         it 'does not add a resource' do
           expect do
-            post send(url_for(action: :create)), params: { user: invalid_attributes }
+            post url_for(action: :create), params: { user: invalid_attributes }
           end.not_to change(model.all, :count)
         end
       end

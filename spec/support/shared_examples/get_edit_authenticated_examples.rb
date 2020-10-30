@@ -4,9 +4,9 @@ RSpec.shared_examples 'GET /edit authenticated' do
   describe 'GET /edit' do
     context 'with a guest' do
       before do
-        model = create resource_singular_symbol
+        factory = create resource_singular_symbol
 
-        get send(url_for(action: :edit), id: model.id)
+        get url_for(action: :edit, id: factory.id)
       end
 
       it 'responds successfully' do
@@ -21,9 +21,9 @@ RSpec.shared_examples 'GET /edit authenticated' do
     context 'with an authenticated user' do
       before do
         sign_in_user
-        model = create resource_singular_symbol
+        factory = create resource_singular_symbol
 
-        get send(url_for(action: :edit), id: model.id)
+        get url_for(action: :edit, id: factory.id)
       end
 
       it 'responds successfully' do
