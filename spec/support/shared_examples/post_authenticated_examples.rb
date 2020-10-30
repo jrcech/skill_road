@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'POST authenticated' do |resource, namespace|
+RSpec.shared_examples 'POST authenticated' do
   describe 'POST' do
-    let!(:model) { resource.to_s.classify.safe_constantize }
-    let!(:valid_attributes) { attributes_for resource.to_s.singularize.to_sym }
-    let!(:invalid_attributes) { attributes_for resource.to_s.singularize.to_sym, :invalid }
+    include_context 'with POST setup'
 
     context 'with an authenticated user' do
       before do
@@ -12,37 +10,29 @@ RSpec.shared_examples 'POST authenticated' do |resource, namespace|
       end
 
       context 'with valid attributes' do
-        it "adds a #{resource}" do
+        it 'adds a resource' do
           expect do
-            post send(url_for(resource, namespace: namespace)), params: { user: valid_attributes }
+            post send(url_for(action: :create)), params: { user: valid_attributes }
           end.to change(model.all, :count).by(1)
         end
       end
 
       context 'with invalid attributes' do
-        it "does not add a #{resource}" do
-          expect do
-            post send(url_for(resource, namespace: namespace)), params: { user: invalid_attributes }
-          end.not_to change(model.all, :count)
-        end
+        include_examples 'does not add a resource'
       end
     end
 
     context 'with a guest' do
       context 'with valid attributes' do
-        it "does not add a #{resource}" do
+        it 'does not add a resource' do
           expect do
-            post send(url_for(resource, namespace: namespace)), params: { user: valid_attributes }
+            post send(url_for(action: :create)), params: { user: valid_attributes }
           end.not_to change(model.all, :count)
         end
       end
 
       context 'with invalid attributes' do
-        it "does not add a #{resource}" do
-          expect do
-            post send(url_for(resource, namespace: namespace)), params: { user: invalid_attributes }
-          end.not_to change(model.all, :count)
-        end
+        include_examples 'does not add a resource'
       end
     end
   end

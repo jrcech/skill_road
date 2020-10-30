@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET /show authenticated' do |resource, namespace|
+RSpec.shared_examples 'GET /show authenticated' do
   describe 'GET /show' do
     context 'with a guest' do
       before do
-        model = create resource
+        model = create resource_singular_symbol
 
-        get send(url_for(resource, actions: :show, namespace: namespace), id: model.id)
+        get send(url_for(action: :show), id: model.id)
       end
 
       it 'responds successfully' do
@@ -21,9 +21,9 @@ RSpec.shared_examples 'GET /show authenticated' do |resource, namespace|
     context 'with an authenticated user' do
       before do
         sign_in_user
-        model = create resource
+        model = create resource_singular_symbol
 
-        get send(url_for(resource, actions: :show, namespace: namespace), id: model.id)
+        get send(url_for(action: :show), id: model.id)
       end
 
       it 'responds successfully' do

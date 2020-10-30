@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 module UrlSupport
-  attr_reader :resource, :action, :namespace
+  attr_reader :action
 
-  def url_for(resource, options = {})
-    @resource = resource
+  def url_for(options = {})
     @action = options[:action]
-    @namespace = options[:namespace]
 
     construct_url
   end
@@ -18,6 +16,8 @@ module UrlSupport
     show
     new
     edit
+    create
+    update
     destroy
   ]
 
@@ -29,19 +29,25 @@ module UrlSupport
     end
   end
 
+  def construct_url
+    url = +''
+    url << "#{action}_" if action_prefix?
+    url << "#{namespace}_" if namespace.present?
+    url << "#{format_resource}_url"
+
+    url
+  end
+
   def action_prefix?
     return true if new? || edit?
 
     false
   end
 
-  def construct_url
-    url = +''
-    url << "#{action}_" if action_prefix?
-    url << "#{namespace}_" if namespace.present?
-    url << "#{resource}_url"
+  def format_resource
+    return resource_plural_symbol if index? || create? || update?
 
-    url
+    resource_singular_symbol
   end
 end
 

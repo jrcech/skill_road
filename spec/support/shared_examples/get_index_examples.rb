@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET /index' do |resource, namespace|
-  attr_reader :resource, :namespace
-
+RSpec.shared_examples 'GET /index' do
   describe 'GET /index' do
     context 'with a guest' do
       before do
-        get send(url_for(resource, actions: :index, namespace: namespace))
+        get send(url_for(action: :index))
       end
 
       it 'responds successfully' do
@@ -22,7 +20,7 @@ RSpec.shared_examples 'GET /index' do |resource, namespace|
       before do
         sign_in_user
 
-        get send(url_for(resource, actions: :index, namespace: namespace))
+        get send(url_for(action: :index))
       end
 
       it 'responds successfully' do

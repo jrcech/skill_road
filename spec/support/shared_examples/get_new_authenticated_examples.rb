@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET /new authenticated' do |resource, namespace|
+RSpec.shared_examples 'GET /new authenticated' do
   describe 'GET /new' do
     context 'with a guest' do
       before do
-        get send(url_for(resource, action: :new, namespace: namespace))
+        get send(url_for(action: :new))
       end
 
       it 'responds successfully' do
@@ -20,7 +20,7 @@ RSpec.shared_examples 'GET /new authenticated' do |resource, namespace|
       before do
         sign_in_user
 
-        get send(url_for(resource, action: :new, namespace: namespace))
+        get send(url_for(action: :new))
       end
 
       it 'responds successfully' do
