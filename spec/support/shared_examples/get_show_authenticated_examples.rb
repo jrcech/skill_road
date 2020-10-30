@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET authenticated examples' do |path|
-  describe "GET #{path}" do
+RSpec.shared_examples 'GET show authenticated examples' do |resource, namespace|
+  describe 'GET /show' do
     context 'with a guest' do
       before do
-        get path
+        model = create resource
+
+        get send(url_for(resource, :show, namespace), id: model.id)
       end
 
       it 'responds successfully' do
@@ -19,7 +21,9 @@ RSpec.shared_examples 'GET authenticated examples' do |path|
     context 'with an authenticated user' do
       before do
         sign_in_user
-        get path
+        model = create resource
+
+        get send(url_for(resource, :show, namespace), id: model.id)
       end
 
       it 'responds successfully' do

@@ -21,7 +21,9 @@ module Utilities
 
     path_actions.each do |path_action|
       define_method("#{path_action}?") do
-        action == path_action
+        return true if action == path_action
+
+        false
       end
     end
 
