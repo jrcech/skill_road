@@ -4,7 +4,7 @@ RSpec.shared_examples 'GET new authenticated examples' do |resource, namespace|
   describe 'GET /new' do
     context 'with a guest' do
       before do
-        get send(url_for(resource, :new, namespace))
+        get send(url_for(resource, action: :new, namespace: namespace))
       end
 
       it 'responds successfully' do
@@ -20,7 +20,7 @@ RSpec.shared_examples 'GET new authenticated examples' do |resource, namespace|
       before do
         sign_in_user
 
-        get send(url_for(resource, :new, namespace))
+        get send(url_for(resource, action: :new, namespace: namespace))
       end
 
       it 'responds successfully' do

@@ -6,7 +6,7 @@ RSpec.shared_examples 'GET show authenticated examples' do |resource, namespace|
       before do
         model = create resource
 
-        get send(url_for(resource, :show, namespace), id: model.id)
+        get send(url_for(resource, actions: :show, namespace: namespace), id: model.id)
       end
 
       it 'responds successfully' do
@@ -23,7 +23,7 @@ RSpec.shared_examples 'GET show authenticated examples' do |resource, namespace|
         sign_in_user
         model = create resource
 
-        get send(url_for(resource, :show, namespace), id: model.id)
+        get send(url_for(resource, actions: :show, namespace: namespace), id: model.id)
       end
 
       it 'responds successfully' do

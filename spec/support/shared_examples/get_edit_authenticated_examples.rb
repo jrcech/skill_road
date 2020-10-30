@@ -6,7 +6,7 @@ RSpec.shared_examples 'GET edit authenticated examples' do |resource, namespace|
       before do
         model = create resource
 
-        get send(url_for(resource, :new, namespace), id: model.id)
+        get send(url_for(resource, action: :edit, namespace: namespace), id: model.id)
       end
 
       it 'responds successfully' do
@@ -23,7 +23,7 @@ RSpec.shared_examples 'GET edit authenticated examples' do |resource, namespace|
         sign_in_user
         model = create resource
 
-        get send(url_for(resource, :new, namespace), id: model.id)
+        get send(url_for(resource, action: :edit, namespace: namespace), id: model.id)
       end
 
       it 'responds successfully' do

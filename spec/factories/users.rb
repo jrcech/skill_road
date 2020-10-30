@@ -58,5 +58,9 @@ FactoryBot.define do
     unconfirmed_email { 'MyString' }
     created_at { '2019-03-08 15:33:28' }
     updated_at { '2019-03-08 15:33:28' }
+
+    trait :invalid do
+      email { nil }
+    end
   end
 end

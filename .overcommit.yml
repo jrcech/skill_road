@@ -3,7 +3,7 @@ CommitMsg:
     on_warn: fail
 PreCommit:
   ALL:
-    on_warn: fail
+    on_fail: warn
   BundleAudit:
     enabled: true
     command: ['bundle-audit', '--ignore', 'CVE-2015-9284']

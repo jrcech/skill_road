@@ -3,10 +3,10 @@
 module UrlSupport
   attr_reader :resource, :action, :namespace
 
-  def url_for(resource, action, namespace = nil)
+  def url_for(resource, options = {})
     @resource = resource
-    @action = action
-    @namespace = namespace
+    @action = options[:action]
+    @namespace = options[:namespace]
 
     construct_url
   end

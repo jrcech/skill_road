@@ -6,7 +6,7 @@ RSpec.shared_examples 'GET index examples' do |resource, namespace|
   describe 'GET /index' do
     context 'with a guest' do
       before do
-        get send(url_for(resource, :index, namespace))
+        get send(url_for(resource, actions: :index, namespace: namespace))
       end
 
       it 'responds successfully' do
@@ -22,7 +22,7 @@ RSpec.shared_examples 'GET index examples' do |resource, namespace|
       before do
         sign_in_user
 
-        get send(url_for(resource, :index, namespace))
+        get send(url_for(resource, actions: :index, namespace: namespace))
       end
 
       it 'responds successfully' do
