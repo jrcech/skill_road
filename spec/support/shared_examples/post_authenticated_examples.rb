@@ -2,7 +2,7 @@
 
 RSpec.shared_examples 'POST authenticated' do
   describe 'POST' do
-    include_context 'with POST setup'
+    include_context 'with attributes'
 
     context 'with an authenticated user' do
       before do
@@ -18,7 +18,11 @@ RSpec.shared_examples 'POST authenticated' do
       end
 
       context 'with invalid attributes' do
-        include_examples 'does not add a resource'
+        it 'does not add a resource' do
+          expect do
+            post send(url_for(action: :create)), params: { user: invalid_attributes }
+          end.not_to change(model.all, :count)
+        end
       end
     end
 
@@ -32,7 +36,11 @@ RSpec.shared_examples 'POST authenticated' do
       end
 
       context 'with invalid attributes' do
-        include_examples 'does not add a resource'
+        it 'does not add a resource' do
+          expect do
+            post send(url_for(action: :create)), params: { user: invalid_attributes }
+          end.not_to change(model.all, :count)
+        end
       end
     end
   end
