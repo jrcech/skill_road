@@ -10,11 +10,7 @@ RSpec.shared_examples 'POST authenticated' do
       end
 
       context 'with valid attributes' do
-        it 'creates a new record' do
-          expect do
-            post url_for(action: :create), params: { user: valid_attributes }
-          end.to change(model.all, :count).by(1)
-        end
+        include_examples 'creates a new record', :valid_attributes
       end
 
       context 'with invalid attributes' do
