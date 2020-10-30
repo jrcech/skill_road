@@ -6,7 +6,7 @@ RSpec.shared_examples 'GET /edit authenticated' do
       before do
         factory = create resource_singular_symbol
 
-        get url_for(action: :edit, id: factory.id)
+        get url_for action: :edit, id: factory.id
       end
 
       it 'responds successfully' do
@@ -23,7 +23,7 @@ RSpec.shared_examples 'GET /edit authenticated' do
         sign_in_user
         factory = create resource_singular_symbol
 
-        get url_for(action: :edit, id: factory.id)
+        get url_for action: :edit, id: factory.id
       end
 
       it 'responds successfully' do
