@@ -15,14 +15,14 @@ RSpec.describe 'Users', type: :request do
 
   actions.each do |action|
     include_examples(
-      "GET #{action} authenticated examples",
+      "GET /#{action} authenticated",
       action == :index ? :users : :user,
       :admin
     )
   end
 
   include_examples(
-    'POST authenticated examples',
+    'POST authenticated',
     :users,
     :admin
   )

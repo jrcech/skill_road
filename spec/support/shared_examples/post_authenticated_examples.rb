@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'POST authenticated examples' do |resource, namespace|
+RSpec.shared_examples 'POST authenticated' do |resource, namespace|
   describe 'POST' do
     let!(:model) { resource.to_s.classify.safe_constantize }
     let!(:valid_attributes) { attributes_for resource.to_s.singularize.to_sym }

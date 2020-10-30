@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET index authenticated examples' do |resource, namespace|
+RSpec.shared_examples 'GET /index authenticated' do |resource, namespace|
   describe 'GET /index' do
     context 'with a guest' do
       before do

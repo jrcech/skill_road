@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET new authenticated examples' do |resource, namespace|
+RSpec.shared_examples 'GET /new authenticated' do |resource, namespace|
   describe 'GET /new' do
     context 'with a guest' do
       before do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'GET index examples' do |resource, namespace|
+RSpec.shared_examples 'GET /index' do |resource, namespace|
   attr_reader :resource, :namespace
 
   describe 'GET /index' do
