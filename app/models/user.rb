@@ -102,16 +102,17 @@ class User < ApplicationRecord
   end
 
   def to_role
+    return nil if role == :owner
     return :member if role == :admin
 
     :admin
   end
 
   def make_member
-    remove_role :admin
+    remove_role :admin if role == :admin
   end
 
   def make_admin
-    add_role :admin
+    add_role :admin if role == :member
   end
 end

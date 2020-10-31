@@ -67,24 +67,37 @@ RSpec.describe User, type: :model do
   end
 
   describe '#role' do
-    it 'returns owner role' do
+    it 'returns owner role for owner' do
       user.add_role :owner
 
       expect(user.role).to eq :owner
     end
 
-    it 'returns admin role' do
+    it 'returns owner role for both owner and admin' do
+      user.add_role :owner
+      user.add_role :admin
+
+      expect(user.role).to eq :owner
+    end
+
+    it 'returns admin role for admin' do
       user.add_role :admin
 
       expect(user.role).to eq :admin
     end
 
-    it 'returns member role' do
+    it 'returns member role for member' do
       expect(user.role).to eq :member
     end
   end
 
   describe '#to_role' do
+    it 'returns nil for owner' do
+      user.add_role :owner
+
+      expect(user.to_role).to eq nil
+    end
+
     it 'returns member role for admin' do
       user.add_role :admin
 
@@ -103,6 +116,13 @@ RSpec.describe User, type: :model do
 
       expect(user.role).to eq :member
     end
+
+    it 'fails making member from owner' do
+      user.add_role :owner
+      user.make_member
+
+      expect(user.role).to eq :owner
+    end
   end
 
   describe '#make_admin' do
@@ -110,6 +130,13 @@ RSpec.describe User, type: :model do
       user.make_admin
 
       expect(user.role).to eq :admin
+    end
+
+    it 'fails making admin from owner' do
+      user.add_role :owner
+      user.make_admin
+
+      expect(user.role).to eq :owner
     end
   end
 end
