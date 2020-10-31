@@ -62,5 +62,9 @@ FactoryBot.define do
     trait :invalid do
       email { nil }
     end
+
+    trait :updated do
+      first_name { 'test' }
+    end
   end
 end

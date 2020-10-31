@@ -3,7 +3,7 @@
 RSpec.shared_examples 'does not create a new record' do |attributes|
   it 'does not create a new record' do
     params = {}
-    params[resource_singular_symbol] = send(attributes)
+    params[resource_singular_symbol] = send attributes
 
     expect do
       post url_for(action: :create), params: params

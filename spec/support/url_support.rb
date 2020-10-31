@@ -11,7 +11,7 @@ module UrlSupport
   end
 
   def send_url
-    return send construct_url, id: id if show? || edit?
+    return send construct_url, id: id if show? || edit? || update?
 
     send construct_url
   end
@@ -52,7 +52,7 @@ module UrlSupport
   end
 
   def format_resource
-    return resource_plural_symbol if index? || create? || update?
+    return resource_plural_symbol if index? || create?
 
     resource_singular_symbol
   end

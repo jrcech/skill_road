@@ -19,4 +19,5 @@ RSpec.describe 'Users', type: :request do
   end
 
   include_examples 'POST authenticated'
+  include_examples 'PATCH authenticated'
 end

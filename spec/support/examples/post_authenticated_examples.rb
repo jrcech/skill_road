@@ -2,7 +2,7 @@
 
 RSpec.shared_examples 'POST authenticated' do
   describe 'POST' do
-    include_context 'with attributes'
+    include_context 'with post attributes'
 
     context 'with an authenticated user' do
       before do
