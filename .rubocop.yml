@@ -17,6 +17,7 @@ Metrics/BlockLength:
     - 'context'
     - 'shared_examples'
     - 'draw'
+    - 'define'
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
