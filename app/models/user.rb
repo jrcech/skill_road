@@ -60,10 +60,12 @@ class User < ApplicationRecord
   )
 
   scope :search_by, (lambda { |query|
-    where('users.email ILIKE ? OR users.first_name ILIKE ? OR users.last_name ILIKE ?',
-          "%#{query.to_s.downcase}%",
-          "%#{query.to_s.downcase}%",
-          "%#{query.to_s.downcase}%")
+    where(
+      'users.email ILIKE ? OR users.first_name ILIKE ? OR users.last_name ILIKE ?',
+      "%#{query}%",
+      "%#{query}%",
+      "%#{query}%"
+    )
   })
 
   def self.from_omniauth(auth)
@@ -83,7 +85,7 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    add_role :user if roles.blank?
+    add_role :member if roles.blank?
   end
 
   def full_name
@@ -107,7 +109,6 @@ class User < ApplicationRecord
 
   def make_member
     remove_role :admin
-    remove_role :owner
   end
 
   def make_admin
