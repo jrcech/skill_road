@@ -11,7 +11,7 @@ module UrlSupport
   end
 
   def send_url
-    return send construct_url, id: id if show? || edit? || update?
+    return send construct_url, id: id if show? || edit? || update? || destroy?
 
     send construct_url
   end
