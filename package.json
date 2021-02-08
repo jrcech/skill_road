@@ -13,11 +13,8 @@
     "jquery": "^3.5.1",
     "jquery-ujs": "^1.2.2",
     "popper.js": "^1.16.1",
-    "postcss-flexbugs-fixes": "^4.2.1",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
     "rails-erb-loader": "^5.5.2",
-    "stimulus": "^1.1.1",
+    "stimulus": "^2.0.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
@@ -25,7 +22,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -34,6 +31,6 @@
     "stylelint-config-sass-guidelines": "^7.1.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.18.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }
