@@ -5,6 +5,8 @@ RSpec.shared_examples 'OmniAuth examples' do |service|
 
   describe service_name do
     before do
+      Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
+
       OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new(
         info: {
           email: 'john.doe@example.com',

@@ -22,10 +22,11 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'email_validator'
 gem 'gretel'
 gem 'mailgun-ruby'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
@@ -68,12 +69,12 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'geckodriver-helper'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'vcr'
   gem 'w3c_validators'
+  gem 'webdrivers', '~> 4.0', require: false
   gem 'webmock'
 end
 

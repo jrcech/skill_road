@@ -2,13 +2,13 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    attr_reader :user
+    attr_reader :user, :auth_data
 
     def provider
-      auth_data = request.env['omniauth.auth'].except(:extra)
+      @auth_data = request.env['omniauth.auth'].except(:extra)
       @user = User.from_omniauth(auth_data)
 
-      process_request auth_data
+      process_request
     end
 
     alias facebook provider
@@ -16,7 +16,7 @@ module Users
 
     private
 
-    def process_request(auth_data)
+    def process_request
       provider = auth_data.provider
 
       if user.persisted?
