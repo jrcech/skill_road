@@ -5,21 +5,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-gem 'jbuilder', '~> 2.7'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
-gem 'webpacker', '~> 4.0'
+gem 'jbuilder', '~> 2.11', '>= 2.11.2'
+gem 'pg', '~> 1.2', '>= 1.2.3'
+gem 'puma', '~> 5.2', '>= 5.2.1'
+gem 'rails', '~> 6.1', '>= 6.1.1'
+gem 'webpacker', '~> 5.2', '>= 5.2.1'
 
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '~> 1.7', '>= 1.7.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
-  gem 'listen', '~> 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.4', '>= 3.4.1'
+  gem 'web-console', '~> 4.1'
 end
 
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
@@ -53,7 +53,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
-  gem 'meta_request'
+  # gem 'meta_request'
   gem 'pry-awesome_print'
   gem 'pry-rails'
 end
