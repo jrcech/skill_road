@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.3'
 
 gem 'jbuilder', '~> 2.11', '>= 2.11.2'
 gem 'pg', '~> 1.2', '>= 1.2.3'
@@ -22,7 +22,7 @@ group :development do
   gem 'web-console', '~> 4.1'
 end
 
-gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'devise'
 gem 'email_validator'
 gem 'gretel'
 gem 'mailgun-ruby'
